@@ -1,7 +1,7 @@
 {
   "name": "first-web-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "first-web-app",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
