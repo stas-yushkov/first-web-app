@@ -20,7 +20,8 @@
   "homepage": "https://github.com/stas-yushkov/first-web-app#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.1.0"
+    "express-handlebars": "^5.1.0",
+    "google-spreadsheet": "^3.1.15"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
