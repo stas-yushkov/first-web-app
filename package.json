@@ -1,5 +1,5 @@
 {
-  "name": "web-app-basics",
+  "name": "first-web-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luxplanjay/web-app-basics.git"
+    "url": "git+https://github.com/stas-yushkov/first-web-app.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Stas Yushkov <stas.yushkov@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/luxplanjay/web-app-basics/issues"
+    "url": "https://github.com/stas-yushkov/first-web-app/issues"
   },
-  "homepage": "https://github.com/luxplanjay/web-app-basics#readme",
+  "homepage": "https://github.com/stas-yushkov/first-web-app#readme",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0"
