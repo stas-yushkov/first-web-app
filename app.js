@@ -64,33 +64,111 @@ app.listen(PORT, () => {
 
 // example using impersonation - NOTE: your service account must have "domain-wide delegation" enabled
 // see https://developers.google.com/identity/protocols/oauth2/service-account#delegatingauthority
+
 (async function() {
   await doc.useServiceAccountAuth(creds, 'test-406@organic-cursor-318504.iam.gserviceaccount.com');
-}());
-
-(async function() {
   await doc.loadInfo(); // loads document properties and worksheets  
-  // console.log(doc.title);
-  console.log('🚀 ~ console.log(doc.title)', (doc.title));
-
+  // // console.log(doc.title);
+  // console.log('🚀 ~ console.log(doc.title)', (doc.title));
     
   const sheet = doc.sheetsByIndex[0]; // or use doc.sheetsById[id] or doc.sheetsByTitle[title]
-  // console.log(sheet.title);
-  console.log('🚀 ~ console.log(sheet.title)', (sheet.title));
-  // console.log(sheet.rowCount);
-  console.log('🚀 ~ console.log(sheet.rowCount)', (sheet.rowCount));
+  // console.log('🚀 ~ sheet', sheet);
 
-  // read rows
+  // // console.log(sheet.title);
+  // console.log('🚀 ~ console.log(sheet.title)', (sheet.title));
+
+  // // console.log(sheet.rowCount);
+  // console.log('🚀 ~ console.log(sheet.rowCount)', (sheet.rowCount));
+
+  // // read rows
   const rows = await sheet.getRows(); // can pass in { limit, offset }
+  // console.log('🚀 ~ rows', rows);
+  
+  // // console.log(rows.length); // 2
+  // console.log('🚀 ~ rows.length', rows.length);
+  // // console.log(rows[0].name); // 'Larry Page'
+  // // console.log(rows[0].email); // 'larry@google.com'
 
-  // read/write row values
-  // console.log(rows[0]); // 'Larry Page'
-  console.log('🚀 ~   console.log(rows[0])',   (rows[0]));
-  // console.log(rows[1]); // 'Larry Page'
-  console.log('🚀 ~ console.log(rows[1])', (rows[1]));
-  // console.log(rows[0].a1); // 'Larry Page'
-  console.log('🚀 ~ console.log(rows[0].a1)', (rows[0].a1));
-  // console.log(rows.headerValues); // 'Larry Page'
-  console.log('🚀 ~ console.log(rows.headerValues)', (rows.headerValues));
+
+  // // read/write row values
+  // // console.log(rows[0]); // 'Larry Page'
+  // console.log('🚀 ~   console.log(rows[0])',   (rows[0]));
+  // // console.log(rows[1]); // 'Larry Page'
+  // console.log('🚀 ~ console.log(rows[1])', (rows[1]));
+  // // console.log(rows[0].a1); // 'Larry Page'
+  // console.log('🚀 ~ console.log(rows[0].name)', (rows[0].name));
+  // console.log('🚀 ~ console.log(rows[0].email)', (rows[0].email));
+  // console.log('🚀 ~ console.log(rows[1].name)', (rows[1].name));
+  // // console.log(rows.headerValues); // 'Larry Page'
+  // console.log('🚀 ~ console.log(rows.headerValues)', (rows.headerValues));
+  // [...rows].forEach((row) => {
+  //   console.log(row.name);
+  //   console.log(row.email);
+  // })
+
+
+  // rows.headerValues
+  // console.log('🚀 ~ rows.headerValues', rows.headerValues);
+  // JSON.parse(rows)
+  // console.log('🚀 ~ JSON.parse(rows)', JSON.parse(rows));
+  // rows.json()
+  // console.log('🚀 ~ rows.json()', rows.json());
+  // sheet.headerValues
+
+
+  // console.log('🚀 ~ sheet.headerValues', sheet.headerValues);
+  // sheet.headerValues.forEach((headerValue) => {
+  //   console.log(headerValue);
+
+  //   [...rows].forEach((row) => {
+  //   console.log(row[headerValue]);
+  //   })
+  // })
+
+  // for (let i = 0; i < rows.length; i += 1) {
+  //   row[i].map((rowContent) => {
+  //     sheet.headerValues.forEach((headerValue) => {
+  //       console.log(rowContent.headerValue);
+  //     }
+  //   }, )
+  // }
+
+
+  // for (let i = 0; i < rows.length; i++) {
+  //   console.log('🚀 ~ i', i);
+  //   console.log('🚀 ~   rows[i]',   rows[i]);
+  //     sheet.headerValues.forEach((headerValue) => {
+  //       console.log(headerValue);
+
+  //       [...rows].forEach((row) => {
+  //         console.log(row[headerValue]);
+  //         //  rows[i].headerValue
+  //         // console.log('🚀 ~ [...rows].forEach ~  rows[i].headerValue',  rows[i].headerValue);
+  //         //  row._rawData
+  //         console.log('🚀 ~ [...rows].forEach ~ row._rawData', row._rawData);
+          
+
+  //       })
+  //     })
+  // }
+  // console.log();
+
+  const productsFromSheet = [];
+  for (let i = 0; i < rows.length; i++) {
+    const productFromSheet = {};
+    // console.log('🚀 ~ i', i);
+    sheet.headerValues.forEach((headerValue) => {
+      // console.log(headerValue);
+      // console.log('🚀 ~ sheet.headerValues.forEach ~ rows[i][headerValue]', rows[i][headerValue]);
+      productFromSheet[headerValue] = rows[i][headerValue];
+    })
+    productsFromSheet.push(productFromSheet)
+  }
+  console.log('🚀 ~  productsFromSheet', productsFromSheet);
+  // JSON.parse(productsFromSheet)
+  console.log('🚀 ~ JSON.stringify(productsFromSheet)', JSON.stringify(productsFromSheet) );
+  // JSON.parse(JSON.stringify(productsFromSheet))
+  console.log('🚀 ~ JSON.parse(JSON.stringify(productsFromSheet))', JSON.parse(JSON.stringify(productsFromSheet)));
+  
 }());
 
